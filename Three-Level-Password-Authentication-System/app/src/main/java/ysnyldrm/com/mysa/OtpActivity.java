@@ -23,7 +23,7 @@ public class OtpActivity extends AppCompatActivity {
     EditText editTextPhone, editTextCode;
 
     FirebaseAuth mAuth;
-    String aa;
+
     String codeSent;
 
     @Override

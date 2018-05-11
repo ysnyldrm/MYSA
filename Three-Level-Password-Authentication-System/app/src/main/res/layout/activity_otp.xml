@@ -4,6 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".OtpActivity">
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="+0123456789"
+        android:ems="10"
+        android:hint="Enter phone number"
+        android:inputType="phone" />
 
+    <Button
+        android:id="@+id/buttonVerification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get OTP Number" />
+
+    <EditText
+        android:id="@+id/editTextCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="0123456789"
+        android:ems="10"
+        android:hint="Enter OTP number"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:text="Login" />
 </LinearLayout>

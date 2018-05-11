@@ -102,7 +102,8 @@
             android:shadowColor="#A80303"
             android:shadowDx="0"
             android:shadowDy="0"
-            android:shadowRadius="5" />
+            android:shadowRadius="5"
+            android:onClick="CreateAccount"/>
 
         <TextView android:id="@+id/link_help"
             android:layout_width="fill_parent"

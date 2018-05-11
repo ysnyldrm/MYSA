@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,7 +13,6 @@
         android:paddingTop="30dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:layout_gravity="center|center_horizontal"
         android:textAlignment="center">
 
         <ImageView
@@ -22,14 +22,7 @@
             android:src="@drawable/logo"
             android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Only for first time you need to create an account"
-            android:textColor="@color/colorBlack"
-            android:layout_gravity="center_horizontal"
-            android:textSize="14sp"
-            android:textStyle="italic"/>
+
 
         <!--  Name Label -->
         <android.support.design.widget.TextInputLayout
@@ -91,6 +84,7 @@
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
+            android:layout_marginTop="20dp"
             android:id="@+id/btn_createAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

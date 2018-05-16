@@ -10,6 +10,5 @@ public class FingerprintActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingerprint);
 
-        int a ;
     }
 }

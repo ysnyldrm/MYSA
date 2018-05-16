@@ -6,6 +6,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#e90020</color>
     <color name="colorButtonBackground">#9da09b9b</color>
-
-
+    <color name="colorTextHint">#000000</color>
 </resources>

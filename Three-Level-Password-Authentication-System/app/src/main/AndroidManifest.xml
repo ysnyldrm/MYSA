@@ -18,8 +18,8 @@
         </activity>
         <activity android:name=".LoginTypeActivity" />
         <activity android:name=".FingerprintActivity" />
-        <activity android:name=".PasswordActivity" />
-        <activity android:name=".OtpActivity"></activity>
+        <activity android:name=".OtpActivity" />
+        <activity android:name=".PasswordActivity"></activity>
     </application>
 
 </manifest>

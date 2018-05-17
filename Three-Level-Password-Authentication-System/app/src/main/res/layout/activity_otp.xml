@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".OtpActivity">
+    tools:context=".OtpActivity"
+    android:background="@color/colorBackground">
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_marginTop="100dp"

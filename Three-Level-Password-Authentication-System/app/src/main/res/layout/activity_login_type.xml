@@ -41,8 +41,7 @@
         android:shadowColor="#A80303"
         android:shadowDx="0"
         android:shadowDy="0"
-        android:shadowRadius="5"
-        android:onClick="fingerprintMethod"/>
+        android:shadowRadius="5" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_choosepassword"
@@ -57,8 +56,7 @@
         android:shadowColor="#A80303"
         android:shadowDx="0"
         android:shadowDy="0"
-        android:shadowRadius="5"
-        android:onClick="passwordMethod"/>
+        android:shadowRadius="5" />
 
 
 </LinearLayout>

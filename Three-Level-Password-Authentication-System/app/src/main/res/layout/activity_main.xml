@@ -27,6 +27,7 @@
             android:id="@+id/textInputLayoutUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorRed"
             android:layout_marginTop="1dp">
 
             <android.support.design.widget.TextInputEditText
@@ -42,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
+            android:textColorHint="@color/colorRed"
             app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
@@ -59,7 +61,8 @@
             android:layout_marginTop="1dp"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
+            android:textColorHint="@color/colorRed"
+            app:passwordToggleTint="@color/colorRed">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/editTextPassword"
@@ -74,13 +77,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/colorRed"
+            app:passwordToggleTint="@color/colorRed">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/editTextPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_phone_number"
+                android:textColorHighlight="@color/colorBlack"
+                android:shadowColor="@color/colorBlack"
+                android:textColorLink="@color/colorBlack"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -88,12 +97,17 @@
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="@string/text_register" />
+            android:text="@string/text_register"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:background="@drawable/button_shape"
+            android:shadowColor="#A80303"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
 
         <TextView
             android:id="@+id/textViewLogin"
@@ -103,6 +117,6 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/text_already_member"
-            android:textColor="@android:color/white" />
+            android:textColor="@drawable/text_selector"/>
     </LinearLayout>
 </ScrollView>

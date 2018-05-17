@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Handling validation for Password field
-        if (!android.util.Patterns.PHONE.matcher(PhoneNumber).matches()) {
+        if (PhoneNumber.isEmpty()) {
             valid = false;
             textInputLayoutPhoneNumber.setError("Please enter valid phoneNumber!");
         } else {

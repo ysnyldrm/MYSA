@@ -26,6 +26,8 @@ public class OtpActivity extends AppCompatActivity {
 
     String codeSent;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,4 +127,6 @@ public class OtpActivity extends AppCompatActivity {
             codeSent = s;
         }
     };
+
+    public void
 }

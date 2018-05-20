@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextPhoneNumber;
 
 
+
     TextInputLayout textInputLayoutUserName;
     TextInputLayout textInputLayoutEmail;
     TextInputLayout textInputLayoutPassword;
@@ -33,10 +34,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         sqliteHelper = new SqliteHelper(this);
+
+        String macAdress = sqliteHelper.getMacAdress();
+
+       if(macAdress != null){
+
+            Intent intent = new Intent(this,LoginTypeActivity.class);
+            startActivity(intent);
+
+        }
+
         initTextViewLogin();
         initViews();
         buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -46,18 +59,19 @@ public class MainActivity extends AppCompatActivity {
                     String UserName = editTextUserName.getText().toString();
                     String Email = editTextEmail.getText().toString();
                     String Password = editTextPassword.getText().toString();
-                    final String PhoneNumber = editTextPhoneNumber.getText().toString();
+                    String PhoneNumber = editTextPhoneNumber.getText().toString();
+                    String MacAddress = "12:25:36";
 
                     //Check in the database is there any user associated with  this email
                     if (!sqliteHelper.isEmailExists(Email)) {
 
                         //Email does not exist now add new user to database
-                        sqliteHelper.addUser(new User(null, UserName, Email, Password, PhoneNumber));
+                        sqliteHelper.addUser(new User(null, UserName, Email, Password, PhoneNumber, MacAddress));
                         Snackbar.make(buttonRegister, "User created successfully! Please Login ", Snackbar.LENGTH_LONG).show();
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intent = new Intent(MainActivity.this,LoginTypeActivity.class);
+                                Intent intent = new Intent(MainActivity.this, LoginTypeActivity.class);
                                 startActivity(intent);
                             }
                         }, Snackbar.LENGTH_LONG);
@@ -71,8 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+
+
+
         private void initTextViewLogin() {
             TextView textViewLogin = (TextView) findViewById(R.id.textViewLogin);
             textViewLogin.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void initViews() {
+
             editTextEmail = (EditText) findViewById(R.id.editTextEmail);
             editTextPassword = (EditText) findViewById(R.id.editTextPassword);
             editTextUserName = (EditText) findViewById(R.id.editTextUserName);
@@ -163,70 +181,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-    /*   public void CreateAccount(View view ){
-
-        boolean flag = true;
-
-        String nameString = name.getText().toString();
-        String emailString = email.getText().toString();
-        String passwordString = password.getText().toString();
-        String phoneNumberString = phoneNumber.getText().toString();
-
-        if (TextUtils.isEmpty(nameString)) {
-            name.setError("This field is required !");
-            flag = false;
-        } else if (TextUtils.isEmpty(emailString)) {
-            email.setError("This field is required !");
-            flag = false;
-
-        } else if (TextUtils.isEmpty(passwordString)) {
-            password.setError("This field is required !");
-            flag = false;
-        }
-          else if(TextUtils.isEmpty(phoneNumberString)){
-            phoneNumber.setError("This field is required !");
-        }
-          else if(flag == true){
-
-            final ProgressDialog progressDialog = new ProgressDialog(this,
-                    R.style.Theme_AppCompat_DayNight_Dialog);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Creating Account...");
-            progressDialog.show();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-
-
-                }
-
-            }, 1000);
-
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    final Intent mainIntent = new Intent(MainActivity.this, LoginTypeActivity.class);
-                    MainActivity.this.startActivity(mainIntent);
-                    MainActivity.this.finish();
-                    progressDialog.dismiss();
-                }
-
-            }, 3000);
-        }
-
-
-
-    } */
 }

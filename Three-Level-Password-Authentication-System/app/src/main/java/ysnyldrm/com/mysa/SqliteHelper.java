@@ -20,6 +20,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
     //USER MAIL
     public static String loggedUserMail = "";
 
+    public static int icount;
+
+
     //TABLE USERS COLUMNS
     public static final String KEY_ID = "id";
     public static final String KEY_USER_NAME = "username";
@@ -56,6 +59,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         //drop table to create new one if database version updated
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_USERS);
     }
+
 
     //using this method we can add users to user table
     public void addUser(User user) {
@@ -98,6 +102,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return null;
     }
 
+
     public boolean isEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
@@ -137,6 +142,30 @@ public class SqliteHelper extends SQLiteOpenHelper {
         else
             return null;
 
+    }
+
+    public String getMacAdress() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_USERS,// Selecting Table
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER, KEY_MACADRESS},//Selecting columns want to query
+                KEY_ID + "=?",
+                new String[]{"1"},//Where clause
+                null, null, null);
+
+
+        if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
+            //if cursor has value then in user database there is user associated with this given email
+            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
+            //Match both passwords check they are same or not
+
+            return user1.macadress;
+        }
+        else
+            return null;
 
     }
+
+
+
+
 }

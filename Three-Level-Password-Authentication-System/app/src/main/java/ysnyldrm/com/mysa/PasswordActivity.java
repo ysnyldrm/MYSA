@@ -31,47 +31,53 @@ public class PasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password);
-        sqliteHelper = new SqliteHelper(this);
-        initCreateAccountTextView();
-        initViews();
+
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_password);
+            sqliteHelper = new SqliteHelper(this);
+            initCreateAccountTextView();
+            initViews();
 
 
-        //set click event of login button
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            //set click event of login button
+            buttonLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                //Check user input is correct or not
-                if (validate()) {
+                    //Check user input is correct or not
+                    if (validate()) {
 
-                    //Get values from EditText fields
-                    String Email = editTextEmail.getText().toString();
-                    String Password = editTextPassword.getText().toString();
+                        //Get values from EditText fields
+                        String Email = editTextEmail.getText().toString();
+                        String Password = editTextPassword.getText().toString();
 
-                    //Authenticate user
-                    User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password, null, null));
+                        //Authenticate user
+                        User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password, null, null));
 
-                    //Check Authentication is successful or not
-                    if (currentUser != null) {
+                        //Check Authentication is successful or not
+                        if (currentUser != null) {
 
 
-                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
-                      Intent intent = new Intent(PasswordActivity.this, OtpActivity.class);
-                      startActivity(intent);
-                    } else {
+                            Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                            Intent intent = new Intent(PasswordActivity.this, OtpActivity.class);
+                            startActivity(intent);
+                        } else {
 
-                        //User Logged in Failed
-                        Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
+                            //User Logged in Failed
+                            Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
 
+                        }
                     }
+
+
+
                 }
-            }
-        });
+            });
 
 
-    }
+        }
+
+
 
     //this method used to set Create account TextView text and click event( maltipal colors
     // for TextView yet not supported in Xml so i have done it programmatically)

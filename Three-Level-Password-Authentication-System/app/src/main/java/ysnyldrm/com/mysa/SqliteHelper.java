@@ -26,6 +26,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_PHONENUMBER = "phonenumber";
+    public static final String KEY_MACADRESS = "macadress";
 
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_USERS
             + " ( "
@@ -33,7 +34,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
             + KEY_USER_NAME + " TEXT, "
             + KEY_EMAIL + " TEXT, "
             + KEY_PASSWORD + " TEXT, "
-            + KEY_PHONENUMBER + " TEXT"
+            + KEY_PHONENUMBER + " TEXT, "
+            + KEY_MACADRESS + " TEXT"
             + " ) ";
 
     public static String number = "";
@@ -69,6 +71,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         values.put(KEY_EMAIL, user.email);
         values.put(KEY_PASSWORD, user.password);
         values.put(KEY_PHONENUMBER, user.phonenumber);
+        values.put(KEY_MACADRESS, user.macadress);
 
         // insert row
         long todo_id = db.insert(TABLE_USERS, null, values);
@@ -77,14 +80,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public User Authenticate(User user) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER, KEY_MACADRESS},//Selecting columns want to query
                 KEY_EMAIL + "=?",
                 new String[]{user.email},//Where clause
                 null, null, null);
 
         if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
             //if cursor has value then in user database there is user associated with this given email
-            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
             //Match both passwords check they are same or not
             if (user.password.equalsIgnoreCase(user1.password)) {
                loggedUserMail = user.email;
@@ -98,7 +101,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public boolean isEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER, KEY_MACADRESS},//Selecting columns want to query
                 KEY_EMAIL + "=?",
                 new String[]{email},//Where clause
                 null, null, null);
@@ -118,7 +121,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public String getPhoneNumber() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS,// Selecting Table
-                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER},//Selecting columns want to query
+                new String[]{KEY_ID, KEY_USER_NAME, KEY_EMAIL, KEY_PASSWORD, KEY_PHONENUMBER, KEY_MACADRESS},//Selecting columns want to query
                 KEY_EMAIL + "=?",
                 new String[]{loggedUserMail},//Where clause
                 null, null, null);
@@ -126,7 +129,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst() && cursor.getCount() > 0) {
             //if cursor has value then in user database there is user associated with this given email
-            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            User user1 = new User(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5));
             //Match both passwords check they are same or not
 
             return user1.phonenumber;

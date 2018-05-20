@@ -28,6 +28,7 @@ public class PasswordActivity extends AppCompatActivity {
     //Declaration SqliteHelper
     SqliteHelper sqliteHelper;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class PasswordActivity extends AppCompatActivity {
         sqliteHelper = new SqliteHelper(this);
         initCreateAccountTextView();
         initViews();
+
 
         //set click event of login button
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +55,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                     //Check Authentication is successful or not
                     if (currentUser != null) {
+
 
                         Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
                       Intent intent = new Intent(PasswordActivity.this, OtpActivity.class);

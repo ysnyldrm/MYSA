@@ -4,17 +4,17 @@ package ysnyldrm.com.mysa;
 
     public class User {
         public String id;
-        public String userName;
+        public String username;
         public String email;
         public String password;
-        public String phoneNumber;
+        public String phonenumber;
 
-        public User(String id, String userName, String email, String password, String phoneNumber) {
+        public User(String id, String username, String email, String password, String phonenumber) {
             this.id = id;
-            this.userName = userName;
+            this.username = username;
             this.email = email;
             this.password = password;
-            this.phoneNumber = phoneNumber;
+            this.phonenumber = phonenumber;
         }
 
     }

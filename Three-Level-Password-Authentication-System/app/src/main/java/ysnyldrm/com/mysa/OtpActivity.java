@@ -1,8 +1,8 @@
 package ysnyldrm.com.mysa;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,6 +25,13 @@ public class OtpActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     String codeSent;
+    String phone;
+
+ SqliteHelper sqliteHelper;
+
+
+
+
 
 
 
@@ -32,7 +39,11 @@ public class OtpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
+        sqliteHelper = new SqliteHelper(this);
 
+
+        // This codes is retrieve logged user phone
+        phone = sqliteHelper.getPhoneNumber();
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -70,7 +81,7 @@ public class OtpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             //here you can open new activity
                             Toast.makeText(getApplicationContext(),
-                                    "Login Successfull", Toast.LENGTH_LONG).show();
+                                    "Login Succesfully", Toast.LENGTH_LONG).show();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getApplicationContext(),
@@ -128,5 +139,4 @@ public class OtpActivity extends AppCompatActivity {
         }
     };
 
-    public void
 }

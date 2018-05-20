@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextUserName;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private EditText editTextphoneNumber;
+    private EditText editTextPhoneNumber;
+
 
     TextInputLayout textInputLayoutUserName;
     TextInputLayout textInputLayoutEmail;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     String UserName = editTextUserName.getText().toString();
                     String Email = editTextEmail.getText().toString();
                     String Password = editTextPassword.getText().toString();
-                    String PhoneNumber = editTextphoneNumber.getText().toString();
+                    final String PhoneNumber = editTextPhoneNumber.getText().toString();
 
                     //Check in the database is there any user associated with  this email
                     if (!sqliteHelper.isEmailExists(Email)) {
@@ -87,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
             editTextEmail = (EditText) findViewById(R.id.editTextEmail);
             editTextPassword = (EditText) findViewById(R.id.editTextPassword);
             editTextUserName = (EditText) findViewById(R.id.editTextUserName);
-            editTextphoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
+            editTextPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
 
             textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
             textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
             textInputLayoutUserName = (TextInputLayout) findViewById(R.id.textInputLayoutUserName);
-            textInputLayoutPhoneNumber = (TextInputLayout) findViewById(R.id.textInputLayoutphoneNumber);
+            textInputLayoutPhoneNumber = (TextInputLayout) findViewById(R.id.textInputLayoutPhoneNumber);
             buttonRegister = (Button) findViewById(R.id.buttonRegister);
 
         }
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         String UserName = editTextUserName.getText().toString();
         String Email = editTextEmail.getText().toString();
         String Password = editTextPassword.getText().toString();
-        String PhoneNumber = editTextphoneNumber.getText().toString();
+        String PhoneNumber = editTextPhoneNumber.getText().toString();
 
         //Handling validation for UserName field
         if (UserName.isEmpty()) {
@@ -150,10 +151,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (Password.length() > 5) {
                 valid = true;
-                textInputLayoutPassword.setError(null);
+                textInputLayoutPhoneNumber.setError(null);
             } else {
                 valid = false;
-                textInputLayoutPassword.setError("PhoneNumber is to short!");
+                textInputLayoutPhoneNumber.setError("PhoneNumber is to short!");
             }
         }
 
